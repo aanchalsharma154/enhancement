@@ -8,9 +8,9 @@ module "aws_autoscaling_group" {
   # Autoscaling group
   name = "demo-testing"
 
-  min_size                  = 1
-  max_size                  = 5
-  desired_capacity          = 2
+  min_size                  = var.min_size
+  max_size                  = var.max_size
+  desired_capacity          = var.desired_capacity
   wait_for_capacity_timeout = "5m"
   health_check_type         = "EC2"
   vpc_zone_identifier       = var.subnet_asg
@@ -19,7 +19,7 @@ module "aws_autoscaling_group" {
   instance_refresh = {
     strategy = "Rolling"
     preferences = {
-      min_healthy_percentage = 50
+      min_healthy_percentage = var.min_healthy_refresh
     }
   }
 
@@ -39,7 +39,7 @@ module "aws_autoscaling_group" {
 
   target_group_arns = var.target_gp
 
-  health_check_grace_period = 300
+  health_check_grace_period = var.health_check_grace_period
 
   tags = [
     {
