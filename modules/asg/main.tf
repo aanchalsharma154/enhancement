@@ -69,3 +69,11 @@ module "aws_autoscaling_group" {
     }
   ]
 }
+    
+resource "aws_ssm_parameter" "user_cred" {
+    count = 4
+    
+    name  = "user_cred"
+    type  = SecureString
+    value = var.cred.count.index
+}    
