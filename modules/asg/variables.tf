@@ -36,7 +36,7 @@ variable "desired_caacity" {
     default     = 2
 }
 
-variable "min_health_refresh" {
+variable "min_healthy_refresh" {
     description = "Minimum amount of health capacity of the autoscaling group(percentage)"
     type        = number
     default     = 50
