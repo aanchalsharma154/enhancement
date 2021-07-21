@@ -34,7 +34,7 @@ module "aws_autoscaling_group" {
   key_name      = "pratishtha-testing"
   #user_data_base64 = base64encode(local.user_data)
   user_data_base64 = base64encode(templatefile("${path.module}/userdata.sh", {
-    rds_endpt = var.rds_point, efs_dns_name = var.dns_name
+    rds_endpt = var.rds_point, efs_dns_name = var.dns_name, mysql_user = var.cred[0], mysql_pass = var.cred[1], db_user = var.cred[2], db_pass = var.cred[3]
   }))
 
   target_group_arns = var.target_gp
