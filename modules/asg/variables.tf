@@ -47,3 +47,9 @@ variable "health_check_grace_period" {
     type        = number
     default     = 300
 }
+
+variable "cred" {
+    description = "user credentials for database"
+    type        = list
+    default     = ["drupaladmin" , "redhat22" , "drupal1'@'%" , "drupalpass"]
+}
